@@ -1,0 +1,17 @@
+# Зависимости ASR-пайплайна. Python 3.14 (или 3.12).
+#
+# torch и torchaudio ставятся ОТДЕЛЬНО под вашу CUDA, ДО этого файла, например (cu126):
+#   pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu126
+#
+# ASR-движок — GigaAM (вместо whisper/whisperx): SOTA для русского, без ctranslate2,
+# поэтому ставится в т.ч. под Python 3.14.
+
+gigaam @ git+https://github.com/salute-developers/GigaAM.git
+pyannote.audio>=3.1
+soundfile
+scipy
+numpy
+anthropic
+
+# ffmpeg — системный пакет (apt install ffmpeg), НЕ pip.
+# whisperx и faster-whisper удалены намеренно — они тянут ctranslate2 и не ставятся на 3.14.
